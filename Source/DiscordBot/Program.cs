@@ -13,7 +13,7 @@ builder.Services.AddPublisher();
 
 using IHost host = builder.Build();
 
-var bot = new DiscordBot.Bot.DiscordBot(host.Services);
+var bot = new Bot(host.Services);
 
 await bot.UseSlashCommands();
 bot.UseMessageReceiver();

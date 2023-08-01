@@ -12,19 +12,19 @@ using System.Reflection;
 
 namespace DiscordBot.Bot;
 
-internal class DiscordBot
+internal class Bot
 {
     private readonly IServiceProvider _serviceProvider;
-    private readonly ILogger<DiscordBot> _logger;
+    private readonly ILogger<Bot> _logger;
     private readonly BotSettings _botSettings;
 
     private Dictionary<string, Func<SocketMessageComponent, Task>> _routingButtons = new();
 
-    public DiscordBot(IServiceProvider serviceProvider)
+    public Bot(IServiceProvider serviceProvider)
     {
         _serviceProvider = serviceProvider;
         _botSettings = _serviceProvider.GetRequiredService<IConfiguration>().GetSection("BotSettings").Get<BotSettings>();
-        _logger = _serviceProvider.GetRequiredService<ILogger<DiscordBot>>();
+        _logger = _serviceProvider.GetRequiredService<ILogger<Bot>>();
         Client = _serviceProvider.GetRequiredService<DiscordSocketClient>();
     }
 
